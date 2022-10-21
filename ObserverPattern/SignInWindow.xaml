@@ -1,0 +1,119 @@
+﻿<Window x:Class="ObserverPattern.SignInWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ObserverPattern"
+        mc:Ignorable="d"
+        Title="SignInWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="1.3*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel>
+            <Button Margin="30"
+                   Height="220"
+                   Click="Button_Click"
+                    Name="btn">
+                <Button.Background>
+                    <ImageBrush ImageSource="click.png"></ImageBrush>
+                </Button.Background>
+            </Button>
+
+            <Label Margin="30,0">Title</Label>
+            <TextBox Margin="30,0"
+                     FontSize="20"
+                     Name="TitleTxtb">
+
+            </TextBox>
+
+            <Button Margin="30,10"
+                    Height="40" Click="Button_Click_1">Add Post</Button>
+
+        </StackPanel>
+        <StackPanel Margin="30,20"
+                    Grid.Column="1">
+            <StackPanel>
+
+                <Label>Notifications</Label>
+                <ListView Name="NotificationsListView" 
+                  Grid.Column="1"
+                  >
+                    <ListView.ItemTemplate >
+                        <DataTemplate >
+                            <StackPanel Orientation="Horizontal"
+                                    VerticalAlignment="Center"
+                                    >
+                                <TextBlock FontSize="22" Text="{Binding Message}">
+
+                                </TextBlock>
+                            </StackPanel>
+
+                        </DataTemplate>
+
+                    </ListView.ItemTemplate>
+
+
+
+                </ListView>
+
+                <ToggleButton Width="200" FontSize="18"
+                          Margin="0,20"
+                          Click="ToggleButton_Click"
+                          Name="toogleButton">Show All Subsribers</ToggleButton>
+
+                <ListView Name="SubscribersListView" 
+                  Grid.Column="1"
+                  >
+                    <ListView.ItemTemplate >
+                        <DataTemplate >
+                            <StackPanel Orientation="Horizontal"
+                                    VerticalAlignment="Center"
+                                    >
+                                <Image Width="40" Height="40" Margin="3" Source="user.png">
+
+                                </Image>
+                                <TextBlock FontSize="22" Text="{Binding Username}">
+
+                                </TextBlock>
+                            </StackPanel>
+
+                        </DataTemplate>
+
+                    </ListView.ItemTemplate>
+
+
+
+                </ListView>
+            </StackPanel>
+
+            <StackPanel Margin="0,10">
+                <Label>
+                    Users
+                </Label>
+                <ListView Name="UsersListView" 
+                  Grid.Column="1"
+                  >
+                    <ListView.ItemTemplate >
+                        <DataTemplate >
+                            <StackPanel Orientation="Horizontal"
+                                    VerticalAlignment="Center"
+                                    >
+                                <TextBlock FontSize="22" Text="{Binding Username}">
+
+                                </TextBlock>
+                                <Button Name="SubscribeBtn" Click="SubscribeBtn_Click" Width="80">Subscribe</Button>
+                            </StackPanel>
+
+                        </DataTemplate>
+
+                    </ListView.ItemTemplate>
+
+
+
+                </ListView>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
